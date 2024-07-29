@@ -1,12 +1,15 @@
+
+
+
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 #Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Plugins
 #plugins=(web-search timer python git emoji common-aliases colored-man-pages)
-plugins=(emoji timer)
+#plugins=(emoji timer)
 
 #load plugins
 source $ZSH/oh-my-zsh.sh
@@ -46,40 +49,21 @@ alias envp='conda deactivate;conda activate phd;clear'
 alias phd_pp='cd ~/Documents/phd/python_projects'
 
 
-
-
-
-
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pat/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/pat/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/pat/.miniconda3/etc/profile.d/conda.sh" ]; then
-# . "/home/pat/.miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+    if [ -f "/home/pat/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/pat/miniconda3/etc/profile.d/conda.sh"
     else
-# export PATH="/home/pat/.miniconda3/bin:$PATH"  # commented out by conda initialize
+        export PATH="/home/pat/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ec2-user/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ec2-user/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ec2-user/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ec2-user/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
+## everyday working env
+conda activate env
