@@ -1,5 +1,6 @@
 
 
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
@@ -15,8 +16,10 @@ source $ZSH/oh-my-zsh.sh
 export TERM="xterm-256color"
 
 
-PROMPT="%{$fg_bold[magenta]%}%{$USER@$HOST%}:
+PROMPT="%{$fg_bold[magenta]%}%{$USER@$HOST%}: %{$fg_bold[white]%}%4d%{$reset_color%}
 %{$fg_bold[white]%}>> %{$reset_color%}"
+
+
 
 #tab complete - and _ are the same
 HYPHEN_INSENSITIVE="true"
@@ -34,8 +37,10 @@ alias cd='cd -P'
 
 alias folder='xdg-open ./ > /dev/null 2>&1' 
 
-alias envp='conda deactivate;conda activate phd;clear'
-alias phd_pp='cd ~/Documents/phd/python_projects'
+#alias vim='nvim'
+
+#alias envp='conda deactivate;conda activate phd;clear'
+#alias phd_pp='cd ~/Documents/phd/python_projects'
 
 
 # >>> conda initialize >>>
@@ -57,3 +62,7 @@ unset __conda_setup
 ## everyday working env
 conda activate env
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
