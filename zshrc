@@ -10,6 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Plugins
 #plugins=(web-search timer python git emoji common-aliases colored-man-pages)
 #plugins=(emoji timer)
+#plugins=(emoji)
 
 #load plugins
 source $ZSH/oh-my-zsh.sh
@@ -37,32 +38,35 @@ alias cd='cd -P'
 
 alias folder='xdg-open ./ > /dev/null 2>&1' 
 
-#alias vim='nvim'
 
-#alias envp='conda deactivate;conda activate phd;clear'
-#alias phd_pp='cd ~/Documents/phd/python_projects'
 
+
+start-conda (){
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pat/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pat/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pat/miniconda3/etc/profile.d/conda.sh"
+    __conda_setup="$('/home/pat/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/pat/miniconda3/bin:$PATH"
+        if [ -f "/home/pat/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/pat/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/pat/miniconda3/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
+    unset __conda_setup
 # <<< conda initialize <<<
 
+    # everyday working env
+    conda activate env
 
-## everyday working env
-conda activate env
+}
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+start-nvm (){
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
