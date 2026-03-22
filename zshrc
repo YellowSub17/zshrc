@@ -1,4 +1,6 @@
-
+######################
+# ZSHRC
+#####################
 
 
 # If you come from bash you might have to change your $PATH.
@@ -10,16 +12,15 @@ export ZSH="$HOME/.oh-my-zsh"
 # Plugins
 #plugins=(web-search timer python git emoji common-aliases colored-man-pages)
 #plugins=(emoji timer)
-#plugins=(emoji)
+plugins=(emoji)
 
 #load plugins
 source $ZSH/oh-my-zsh.sh
 export TERM="xterm-256color"
 
 
-PROMPT="%{$fg_bold[magenta]%}%{$USER@$HOST%}: %{$fg_bold[white]%}%4d%{$reset_color%}
+PROMPT="%{$fg_bold[green]%}%{$USER@$HOST%}: %{$fg_bold[white]%}%4d%{$reset_color%}
 %{$fg_bold[white]%}>> %{$reset_color%}"
-
 
 
 #tab complete - and _ are the same
@@ -36,7 +37,10 @@ HIST_STAMPS="yyyy-mm-dd"
 #cd -P will not follow symlinks, it will take you to the actual folder
 alias cd='cd -P'
 
-alias folder='xdg-open ./ > /dev/null 2>&1' 
+alias ssh-sacla='ssh padams@xhpcfep.hpc.spring8.or.jp'
+alias ssh-maxwell='ssh patricka@max-display007.desy.de'
+alias ssh-s3df='ssh padams@s3dflogin.slac.stanford.edu'
+alias ssh-davinci='ssh pat@davinci.icm.uu.se'
 
 
 
@@ -45,28 +49,25 @@ start-conda (){
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/pat/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
     else
-        if [ -f "/home/pat/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/pat/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/home/pat/miniconda3/bin:$PATH"
-        fi
+        export PATH="/opt/miniconda3/bin:$PATH"
     fi
-    unset __conda_setup
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
-    # everyday working env
-    conda activate env
+# everyday working env
+conda activate env
 
 }
 
 
+source ${HOME}/.ghcup/env
 
-start-nvm (){
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
+
