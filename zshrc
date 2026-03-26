@@ -10,9 +10,6 @@ export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # Plugins
-#plugins=(web-search timer python git emoji common-aliases colored-man-pages)
-#plugins=(emoji timer)
-plugins=(emoji)
 
 #load plugins
 source $ZSH/oh-my-zsh.sh
@@ -32,16 +29,9 @@ DISABLE_MAGIC_FUNCTIONS="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 
-
 # Alias definitions.
 #cd -P will not follow symlinks, it will take you to the actual folder
 alias cd='cd -P'
-
-alias ssh-sacla='ssh padams@xhpcfep.hpc.spring8.or.jp'
-alias ssh-maxwell='ssh patricka@max-display007.desy.de'
-alias ssh-s3df='ssh padams@s3dflogin.slac.stanford.edu'
-alias ssh-davinci='ssh pat@davinci.icm.uu.se'
-
 
 
 
@@ -69,5 +59,3 @@ conda activate env
 
 
 source ${HOME}/.ghcup/env
-
-
